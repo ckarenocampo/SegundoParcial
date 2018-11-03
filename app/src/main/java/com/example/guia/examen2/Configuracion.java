@@ -14,8 +14,8 @@ public class Configuracion extends AppCompatActivity {
     RadioButton rbt1,rbt2,rbt3;
     RadioButton rbtt1,rbtt2,rbtt3;
     EditText txtNick;
-    String nivel="Fácil";
-    int tiempo;
+    String nivel;
+    int tiempo,segundos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +31,10 @@ public class Configuracion extends AppCompatActivity {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
     }
+
     public void OnClickGuardar(View v){
         String jugador = txtNick.getText().toString();
-        int segundos = 0;
+
         if(jugador.isEmpty()){
             txtNick.setHint("Ingresa un nickname");
             txtNick.setHintTextColor(Color.rgb(255, 128, 128));

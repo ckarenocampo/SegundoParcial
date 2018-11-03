@@ -21,6 +21,7 @@ public class Lista extends AppCompatActivity implements AdapterView.OnItemClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
+
         adapter = new AdaptadorJugador(Lista.this,MainActivity.listaJugadores);
         //MainActivity.sortArrayList(adapter);
         listView = findViewById(R.id.list);

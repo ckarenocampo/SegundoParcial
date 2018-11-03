@@ -63,8 +63,7 @@ public class MainActivity extends AppCompatActivity {
             case NIVEL:
                 if (data == null) return;
                 nivel = data.getIntExtra("NIVEL",50);
-                tiemposegundos = data.getIntExtra("TIEMPO",60);
-
+                tiemposegundos = data.getIntExtra("TIEMPO",60000);
                 break;
         }
     }

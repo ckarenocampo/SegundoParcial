@@ -32,7 +32,7 @@ public class AdaptadorJugador extends ArrayAdapter<Jugador> {
         // mostrar los datos
        // img.setImageResource(R.drawable.ic_user);
         lblNombre.setText(jugador.getNick());
-        lblPuntaje.setText(jugador.getPuntaje());
+        lblPuntaje.setText(String.valueOf(jugador.getPuntaje()));
         lblNivel.setText(jugador.getNivel());
         lblTiempo.setText(String.valueOf(jugador.getTiempo()));
 
