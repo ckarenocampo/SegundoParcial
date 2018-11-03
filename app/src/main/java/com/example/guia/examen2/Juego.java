@@ -18,7 +18,7 @@ public class Juego extends AppCompatActivity {
 
     Button btnAdivinar;
     int numeroIngresado,numAleatorio = 0, nivelGenerar = 50,intentos = 0;
-    TextView txtNivel, txtIntentos, txtNick, lblNumero,lblAdivina,lblTiempo;
+    TextView txtNivel, txtIntentos, txtNick, lblNumero,lblAdivina,lblTiempo,lblTiempodispo;
     EditText txtNumIngre;
     private ProgressBar pgbarHorizontal;
     int contprogress=0;
@@ -41,6 +41,7 @@ public class Juego extends AppCompatActivity {
         txtNumIngre = findViewById(R.id.txtNumeroIngresado);
         lblAdivina = findViewById(R.id.lblAdivina);
         lblTiempo = findViewById(R.id.lblTiempo);
+        lblTiempodispo = findViewById(R.id.lblTiempoDispo);
         pgbarHorizontal = findViewById(R.id.progressBar);
 
         manejarprocesos= new Handler();
@@ -55,15 +56,17 @@ public class Juego extends AppCompatActivity {
         if (nivelGenerar == 50) {
             txtNivel.setText("Fácil");
             lblAdivina.setText("Adivina el numero entre 1 y 50");
+            lblTiempodispo.setText("1 minuto");
         } else {
             if (nivelGenerar == 100) {
                 txtNivel.setText("Medio");
                 lblAdivina.setText("Adivina el numero entre 1 y 100");
-
+                lblTiempodispo.setText("2 minutos");
             } else {
                 if (nivelGenerar == 150) {
                     txtNivel.setText("Difícil");
                     lblAdivina.setText("Adivina el numero entre 1 y 150");
+                    lblTiempodispo.setText("3 minutos");
                 }
             }
         }
@@ -73,6 +76,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onTick(long millisUntilFinished) {
                 contprogress++;
+                j.setTiempo(j.getTiempo()+1);
                 lblTiempo.setText(contprogress+" s");
                 pgbarHorizontal.setProgress(contprogress*100/(time/1000));
             }

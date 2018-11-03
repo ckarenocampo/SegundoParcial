@@ -14,7 +14,7 @@ public class Configuracion extends AppCompatActivity {
     RadioButton rbt1,rbt2,rbt3;
     RadioButton rbtt1,rbtt2,rbtt3;
     EditText txtNick;
-    String nivel;
+    int nivel;
     int tiempo,segundos;
 
     @Override
@@ -42,17 +42,17 @@ public class Configuracion extends AppCompatActivity {
             Intent activity = new Intent(this, MainActivity.class);
 
             if (rbt1.isChecked()) {
-                nivel = "Fácil";
+                nivel = 1;
                 activity.putExtra("NIVEL", 50);
                 setResult(MainActivity.NIVEL, activity);
             }
             if (rbt2.isChecked()) {
-                nivel = "Medio";
+                nivel = 2;
                 activity.putExtra("NIVEL", 100);
                 setResult(MainActivity.NIVEL, activity);
             }
             if (rbt3.isChecked()) {
-                nivel = "Difícil";
+                nivel = 3;
                 activity.putExtra("NIVEL", 150);
                 setResult(MainActivity.NIVEL, activity);
             }
@@ -72,7 +72,7 @@ public class Configuracion extends AppCompatActivity {
                 activity.putExtra("TIEMPO", tiempo);
             }
 
-            Jugador jug = new Jugador(jugador, 0,nivel,segundos);
+            Jugador jug = new Jugador(jugador, 0,nivel,0);
             MainActivity.listaJugadores.add(jug);
             finish();
         }

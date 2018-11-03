@@ -13,9 +13,8 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="153dp"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
@@ -23,27 +22,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Nivel" />
+                android:text="Nivel:" />
 
             <TextView
                 android:id="@+id/TextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Jugador" />
+                android:text="Jugador:" />
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Intentos" />
+                android:text="Intentos:" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
@@ -68,6 +66,30 @@
                 android:text="Intentos" />
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiempo:"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/lblTiempoDispo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="60 s"/>
+
+        </LinearLayout>
+
+
     </LinearLayout>
     <ProgressBar
         android:id="@+id/progressBar"

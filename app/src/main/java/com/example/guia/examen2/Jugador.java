@@ -10,10 +10,10 @@ import java.util.ArrayList;
 public class Jugador implements Parcelable {
     String nick;
     int puntaje;
-    String nivel;
+    int nivel;
     int tiempo;
 
-    public Jugador(String nick, int puntaje, String nivel, int tiempo) {
+    public Jugador(String nick, int puntaje, int nivel, int tiempo) {
         this.nick = nick;
         this.puntaje = puntaje;
         this.nivel = nivel;
@@ -22,7 +22,7 @@ public class Jugador implements Parcelable {
     private Jugador(Parcel in) {
         this.nick = in.readString();
         this.puntaje = in.readInt();
-        this.nivel = in.readString();
+        this.nivel = in.readInt();
         this.tiempo=in.readInt();
     }
 
@@ -54,11 +54,11 @@ public class Jugador implements Parcelable {
         this.puntaje = puntaje;
     }
 
-    public String getNivel() {
+    public int getNivel() {
         return nivel;
     }
 
-    public void setNivel(String nivel) {
+    public void setNivel(int nivel) {
         this.nivel = nivel;
     }
 
@@ -79,7 +79,7 @@ public class Jugador implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(nick);
         parcel.writeInt(puntaje);
-        parcel.writeString(nivel);
+        parcel.writeInt(nivel);
         parcel.writeInt(tiempo);
 
     }

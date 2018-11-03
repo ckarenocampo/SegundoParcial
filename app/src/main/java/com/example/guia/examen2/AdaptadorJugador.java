@@ -34,7 +34,7 @@ public class AdaptadorJugador extends ArrayAdapter<Jugador> {
         lblNombre.setText(jugador.getNick());
         lblPuntaje.setText(String.valueOf(jugador.getPuntaje()));
         lblNivel.setText(jugador.getNivel());
-        lblTiempo.setText(String.valueOf(jugador.getTiempo()));
+        lblTiempo.setText(String.valueOf(jugador.getTiempo())+" s");
 
         // Return la convertView ya con los datos
         return convertView;

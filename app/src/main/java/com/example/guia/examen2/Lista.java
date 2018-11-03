@@ -24,6 +24,7 @@ public class Lista extends AppCompatActivity implements AdapterView.OnItemClickL
 
         adapter = new AdaptadorJugador(Lista.this,MainActivity.listaJugadores);
         MainActivity.sortArrayList(adapter);
+        Jugador.quickSortPun(MainActivity.listaJugadores);
         listView = findViewById(R.id.list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
@@ -42,10 +43,6 @@ public class Lista extends AppCompatActivity implements AdapterView.OnItemClickL
             lista.putExtra("Posicion", position);
             startActivity(lista);
             finish();
-        }else{
-            //Solo para visualizar los mejores puntajes
-            Jugador.quickSortPun(MainActivity.listaJugadores);
-
         }
     }
 
