@@ -74,13 +74,4 @@ public class MainActivity extends AppCompatActivity {
         outState.putParcelableArrayList("Lista",listaJugadores);
     }
 
-    public static void sortArrayList(ArrayAdapter adapter) {
-        Collections.sort(listaJugadores, new Comparator<Jugador>() {
-            @Override
-            public int compare(Jugador o1, Jugador o2) {
-                return o1.getNivel().compareTo(o2.getNivel()) ;
-            }
-        });
-        adapter.notifyDataSetChanged();
-    }
 }

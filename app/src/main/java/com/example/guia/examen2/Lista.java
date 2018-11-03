@@ -23,7 +23,6 @@ public class Lista extends AppCompatActivity implements AdapterView.OnItemClickL
         setContentView(R.layout.activity_lista);
 
         adapter = new AdaptadorJugador(Lista.this,MainActivity.listaJugadores);
-        MainActivity.sortArrayList(adapter);
         Jugador.quickSortPun(MainActivity.listaJugadores);
         listView = findViewById(R.id.list);
         listView.setAdapter(adapter);
