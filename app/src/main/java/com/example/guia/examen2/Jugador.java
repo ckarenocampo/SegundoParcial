@@ -114,7 +114,8 @@ public class Jugador implements Parcelable {
         greater = quickSortPun(greater);
         lesser.add(pivot);
         lesser.addAll(greater);
-        return greater;
+        list=lesser;
+        return list;
     }
 
     public static ArrayList<Jugador> quickSortNiv(ArrayList<Jugador> list){
@@ -126,7 +127,7 @@ public class Jugador implements Parcelable {
 
         Jugador pivot = list.get(list.size()-1);
         for(int i=0; i<list.size()-1; i++){
-            if (list.get(i).nivel>pivot.nivel){
+            if (list.get(i).nivel<pivot.nivel){
                 lesser.add(list.get(i));
             }else{
                 greater.add(list.get(i));
@@ -136,7 +137,8 @@ public class Jugador implements Parcelable {
         greater = quickSortPun(greater);
         lesser.add(pivot);
         lesser.addAll(greater);
-        return greater;
+        list=lesser;
+        return list;
     }
 
 }

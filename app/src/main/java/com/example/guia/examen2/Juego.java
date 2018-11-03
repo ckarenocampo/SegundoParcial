@@ -47,7 +47,7 @@ public class Juego extends AppCompatActivity {
         manejarprocesos= new Handler();
         posicion=getIntent().getIntExtra("Posicion", 0);
         j=MainActivity.listaJugadores.get(posicion);
-        nivelGenerar = (MainActivity.nivel);
+        nivelGenerar = (MainActivity.generar);
         time = MainActivity.tiemposegundos;
         //this.pgbarHorizontal.setMax(100);
         pgbarHorizontal.setProgress(0);
@@ -83,11 +83,9 @@ public class Juego extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                //Do what you want
                 contprogress++;
                 pgbarHorizontal.setProgress(100);
                 mCountDownTimer.cancel();
-                //Toast.makeText(getApplicationContext(), "Intento terminado", Toast.LENGTH_SHORT).show();
                 finish();
             }
 
@@ -104,14 +102,11 @@ public class Juego extends AppCompatActivity {
     }
 
     public void OnClickPrueba(View v){
-       //num = txtNumIngre.getText().toString();
-        //Toast.makeText(this, ""+num, Toast.LENGTH_SHORT).show();
-        String nume = txtNumIngre.getText().toString();
+         String nume = txtNumIngre.getText().toString();
         if(nume.isEmpty()){
            Toast.makeText(this, "Ingresa un numero", Toast.LENGTH_SHORT).show();
        }else {
             numeroIngresado = Integer.parseInt(txtNumIngre.getText().toString());
-           // new Thread(new HiloSecundario()).start();
            if (numeroIngresado == numAleatorio) {
                lblNumero.setText(numAleatorio + "");
                Toast.makeText(this, "Adivinaste, felicidades", Toast.LENGTH_SHORT).show();
@@ -132,39 +127,6 @@ public class Juego extends AppCompatActivity {
        }
    }
 
-    final class HiloSecundario implements Runnable{
-        @Override
-        public void run(){
-            while (contprogress<time){
-                MetodoEspera();
-                //ESTABLECEMOS MANEJADOR CON LA PARTE VISUAL
-                manejarprocesos.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        pgbarHorizontal.setProgress(contprogress);
-
-                        if(contprogress==time){
-                            //Toast.makeText(Juego.this,"Tiempo agotado",Toast.LENGTH_LONG).show();
-                            contprogress=0;
-                            finish();
-                            //pgbarHorizontal.setProgress(0);
-                        }
-
-                    }
-                });
-            }
-        }
-
-        private void MetodoEspera(){
-            try{
-                Thread.sleep(3000);
-                contprogress++;
-                lblTiempo.setText(contprogress+" s");
-            }catch (Exception e){
-
-            }
-        }
-    }
 
 }
 

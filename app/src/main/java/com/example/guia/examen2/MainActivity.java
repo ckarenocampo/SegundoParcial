@@ -14,8 +14,7 @@ import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
     public static final int NIVEL=2;
-    public static int nivel=50;
-    public static int tiemposegundos=60;
+    public static int tiemposegundos=60000, generar=50;
     Jugador j;
 
     public static ArrayList<Jugador> listaJugadores;
@@ -75,12 +74,12 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case NIVEL:
                 if (data == null) return;
-                nivel = data.getIntExtra("NIVEL",50);
-                tiemposegundos = data.getIntExtra("TIEMPO",60000);
                 String name = data.getStringExtra("NOMBRE");
+                int nivel = data.getIntExtra("DIFICULTAD",1);
+                tiemposegundos = data.getIntExtra("TIEMPO",60000);
+                generar = data.getIntExtra("GENERAR",50);
                 j = new Jugador(MainActivity.listaJugadores.size()+1,name, 0,nivel,0);
                 listaJugadores.add(j);
-
                 break;
         }
     }

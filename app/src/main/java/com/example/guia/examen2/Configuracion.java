@@ -14,7 +14,7 @@ public class Configuracion extends AppCompatActivity {
     RadioButton rbt1,rbt2,rbt3;
     RadioButton rbtt1,rbtt2,rbtt3;
     EditText txtNick;
-    int nivel;
+    int nivel,generar;
     int tiempo,segundos;
 
     @Override
@@ -40,38 +40,35 @@ public class Configuracion extends AppCompatActivity {
             txtNick.setHintTextColor(Color.rgb(255, 128, 128));
         }else {
             Intent activity = new Intent(this, MainActivity.class);
-            activity.putExtra("NOMBRE",jugador);
             if (rbt1.isChecked()) {
-                nivel = 1;
-                activity.putExtra("NIVEL", 50);
-                setResult(MainActivity.NIVEL, activity);
+                nivel = 3;
+                generar=50;
             }
             if (rbt2.isChecked()) {
                 nivel = 2;
-                activity.putExtra("NIVEL", 100);
-                setResult(MainActivity.NIVEL, activity);
+                generar=100;
             }
             if (rbt3.isChecked()) {
-                nivel = 3;
-                activity.putExtra("NIVEL", 150);
-                setResult(MainActivity.NIVEL, activity);
+                nivel = 1;
+                generar=150;
             }
             if (rbtt1.isChecked()) {
                 tiempo=60000;
                 segundos=60;
-                activity.putExtra("TIEMPO", tiempo);
             }
             if (rbtt2.isChecked()) {
                 tiempo =120000;
                 segundos=120;
-                activity.putExtra("TIEMPO", tiempo);
             }
             if (rbtt3.isChecked()) {
                 tiempo = 180000;
                 segundos=180;
-                activity.putExtra("TIEMPO", tiempo);
             }
-
+            activity.putExtra("NOMBRE",jugador);
+            activity.putExtra("TIEMPO", tiempo);
+            activity.putExtra("GENERAR", generar);
+            activity.putExtra("DIFICULTAD", nivel);
+            setResult(MainActivity.NIVEL, activity);
             finish();
 
 

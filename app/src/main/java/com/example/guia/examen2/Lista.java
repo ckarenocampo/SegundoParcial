@@ -26,15 +26,15 @@ public class Lista extends AppCompatActivity {
         listView = findViewById(R.id.list);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        //MainActivity.listaJugadores= Jugador.quickSortNiv(MainActivity.listaJugadores);
+        MainActivity.listaJugadores= Jugador.quickSortNiv(MainActivity.listaJugadores);
         listDificil=new ArrayList<>();
         listMedio=new ArrayList<>();
         listFacil=new ArrayList<>();
-        //DivLista(MainActivity.listaJugadores);
+        DivLista(MainActivity.listaJugadores);
         listFacil = Jugador.quickSortPun(listFacil);
         listMedio = Jugador.quickSortPun(listMedio);
         listDificil = Jugador.quickSortPun(listDificil);
-
+        MainActivity.listaJugadores.clear();
         MainActivity.listaJugadores.addAll(listDificil);
         MainActivity.listaJugadores.addAll(listMedio);
         MainActivity.listaJugadores.addAll(listFacil);
@@ -50,7 +50,7 @@ public class Lista extends AppCompatActivity {
         Iterator<Jugador> iterator = lst.iterator();
         while (iterator.hasNext()){
             Jugador jugador=iterator.next();
-            if(jugador.nivel==1){
+            if(jugador.nivel==3){
                 listFacil.add(jugador);
             }else{
                 if(jugador.nivel==2){
