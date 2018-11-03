@@ -23,7 +23,7 @@ public class Lista extends AppCompatActivity implements AdapterView.OnItemClickL
         setContentView(R.layout.activity_lista);
 
         adapter = new AdaptadorJugador(Lista.this,MainActivity.listaJugadores);
-        //MainActivity.sortArrayList(adapter);
+        MainActivity.sortArrayList(adapter);
         listView = findViewById(R.id.list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
@@ -44,7 +44,7 @@ public class Lista extends AppCompatActivity implements AdapterView.OnItemClickL
             finish();
         }else{
             //Solo para visualizar los mejores puntajes
-           // Jugador.quickSortPun(MainActivity.listaJugadores);
+            Jugador.quickSortPun(MainActivity.listaJugadores);
 
         }
     }

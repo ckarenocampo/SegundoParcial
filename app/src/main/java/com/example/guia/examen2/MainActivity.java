@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putParcelableArrayList("Lista",listaJugadores);
     }
-/*
+
     public static void sortArrayList(ArrayAdapter adapter) {
         Collections.sort(listaJugadores, new Comparator<Jugador>() {
             @Override
@@ -82,5 +82,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         adapter.notifyDataSetChanged();
-    }*/
+    }
 }
