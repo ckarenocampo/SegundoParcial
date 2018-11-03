@@ -40,9 +40,9 @@ public class Configuracion extends AppCompatActivity {
             txtNick.setHintTextColor(Color.rgb(255, 128, 128));
         }else {
             Intent activity = new Intent(this, MainActivity.class);
-
+            activity.putExtra("NOMBRE",jugador);
             if (rbt1.isChecked()) {
-                nivel = 3;
+                nivel = 1;
                 activity.putExtra("NIVEL", 50);
                 setResult(MainActivity.NIVEL, activity);
             }
@@ -52,7 +52,7 @@ public class Configuracion extends AppCompatActivity {
                 setResult(MainActivity.NIVEL, activity);
             }
             if (rbt3.isChecked()) {
-                nivel = 1;
+                nivel = 3;
                 activity.putExtra("NIVEL", 150);
                 setResult(MainActivity.NIVEL, activity);
             }
@@ -72,8 +72,6 @@ public class Configuracion extends AppCompatActivity {
                 activity.putExtra("TIEMPO", tiempo);
             }
 
-            Jugador jug = new Jugador(jugador, 0,nivel,0);
-            MainActivity.listaJugadores.add(jug);
             finish();
 
 

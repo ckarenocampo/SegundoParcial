@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int NIVEL=2;
     public static int nivel=50;
     public static int tiemposegundos=60;
+    Jugador j;
 
     public static ArrayList<Jugador> listaJugadores;
     Button btnJuego, btnPuntajes, btnConfi;
@@ -38,8 +39,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "No hay ningun jugador registrado", Toast.LENGTH_SHORT).show();
         }else{
             Intent intent = new Intent(MainActivity.this,Juego.class);
-            int posicion = listaJugadores.size()-1;
-            intent.putExtra("Posicion",posicion);
+            intent.putExtra("Posicion",Posicionar(j));
             startActivity(intent);
         }
     }
@@ -58,6 +58,17 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent,NIVEL);
     }
 
+    public int Posicionar(Jugador j){
+        int index = -1;
+        int tam = listaJugadores.size();
+        for (int i = 0; i < tam; i++) {
+            if (listaJugadores.get(i).id ==(j.id)) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -66,7 +77,10 @@ public class MainActivity extends AppCompatActivity {
                 if (data == null) return;
                 nivel = data.getIntExtra("NIVEL",50);
                 tiemposegundos = data.getIntExtra("TIEMPO",60000);
-                Toast.makeText(this, ""+ nivel+tiemposegundos, Toast.LENGTH_SHORT).show();
+                String name = data.getStringExtra("NOMBRE");
+                j = new Jugador(MainActivity.listaJugadores.size()+1,name, 0,nivel,0);
+                listaJugadores.add(j);
+
                 break;
         }
     }

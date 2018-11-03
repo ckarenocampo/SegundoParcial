@@ -19,6 +19,7 @@
         <activity android:name=".Juego" />
         <activity android:name=".Configuracion" />
         <activity android:name=".Lista" />
+        <activity android:name=".Iniciar"></activity>
     </application>
 
 </manifest>

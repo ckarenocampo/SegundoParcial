@@ -8,18 +8,22 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Jugador implements Parcelable {
+    int id;
     String nick;
     int puntaje;
     int nivel;
     int tiempo;
 
-    public Jugador(String nick, int puntaje, int nivel, int tiempo) {
+    public Jugador(int id, String nick, int puntaje, int nivel, int tiempo) {
+        this.id = id;
         this.nick = nick;
         this.puntaje = puntaje;
         this.nivel = nivel;
         this.tiempo = tiempo;
     }
+
     private Jugador(Parcel in) {
+        this.id = in.readInt();
         this.nick = in.readString();
         this.puntaje = in.readInt();
         this.nivel = in.readInt();
@@ -37,6 +41,14 @@ public class Jugador implements Parcelable {
             return new Jugador[size];
         }
     };
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNick() {
         return nick;

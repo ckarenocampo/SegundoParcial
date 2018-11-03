@@ -33,7 +33,7 @@ public class AdaptadorJugador extends ArrayAdapter<Jugador> {
        // img.setImageResource(R.drawable.ic_user);
         lblNombre.setText(jugador.getNick());
         lblPuntaje.setText(String.valueOf(jugador.getPuntaje()));
-        if(jugador.getNivel()==1){
+        if(jugador.getNivel()==3){
             lblNivel.setText("Dificil");
         }else{
             if(jugador.getNivel()==2){
