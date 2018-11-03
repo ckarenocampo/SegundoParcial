@@ -42,7 +42,7 @@ public class Configuracion extends AppCompatActivity {
             Intent activity = new Intent(this, MainActivity.class);
 
             if (rbt1.isChecked()) {
-                nivel = 1;
+                nivel = 3;
                 activity.putExtra("NIVEL", 50);
                 setResult(MainActivity.NIVEL, activity);
             }
@@ -52,7 +52,7 @@ public class Configuracion extends AppCompatActivity {
                 setResult(MainActivity.NIVEL, activity);
             }
             if (rbt3.isChecked()) {
-                nivel = 3;
+                nivel = 1;
                 activity.putExtra("NIVEL", 150);
                 setResult(MainActivity.NIVEL, activity);
             }
