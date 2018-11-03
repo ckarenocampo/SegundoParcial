@@ -33,7 +33,15 @@ public class AdaptadorJugador extends ArrayAdapter<Jugador> {
        // img.setImageResource(R.drawable.ic_user);
         lblNombre.setText(jugador.getNick());
         lblPuntaje.setText(String.valueOf(jugador.getPuntaje()));
-        lblNivel.setText(jugador.getNivel());
+        if(jugador.getNivel()==1){
+            lblNivel.setText("Dificil");
+        }else{
+            if(jugador.getNivel()==2){
+                lblNivel.setText("Medio");
+            }else{
+                lblNivel.setText("Facil");
+            }
+        }
         lblTiempo.setText(String.valueOf(jugador.getTiempo())+" s");
 
         // Return la convertView ya con los datos

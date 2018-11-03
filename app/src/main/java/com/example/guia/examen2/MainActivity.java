@@ -37,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
         if(listaJugadores.size()==0){
             Toast.makeText(this, "No hay ningun jugador registrado", Toast.LENGTH_SHORT).show();
         }else{
-            Intent intent = new Intent(MainActivity.this,Lista.class);
+            Intent intent = new Intent(MainActivity.this,Juego.class);
+            int posicion = listaJugadores.size()-1;
+            intent.putExtra("Posicion",posicion);
             startActivity(intent);
         }
     }
@@ -47,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "No hay ningun jugador registrado", Toast.LENGTH_SHORT).show();
         }else {
             Intent intent = new Intent(MainActivity.this, Lista.class);
-            intent.putExtra("Listado", true);
             startActivity(intent);
         }
     }
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this,Configuracion.class);
         startActivityForResult(intent,NIVEL);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 if (data == null) return;
                 nivel = data.getIntExtra("NIVEL",50);
                 tiemposegundos = data.getIntExtra("TIEMPO",60000);
+                Toast.makeText(this, ""+ nivel+tiemposegundos, Toast.LENGTH_SHORT).show();
                 break;
         }
     }

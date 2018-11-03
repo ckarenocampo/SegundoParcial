@@ -105,5 +105,26 @@ public class Jugador implements Parcelable {
         return greater;
     }
 
+    public static ArrayList<Jugador> quickSortNiv(ArrayList<Jugador> list){
+        if(list.size() <=1)
+            return  list;
+
+        ArrayList<Jugador> lesser = new ArrayList<>();
+        ArrayList<Jugador> greater = new ArrayList<>();
+
+        Jugador pivot = list.get(list.size()-1);
+        for(int i=0; i<list.size()-1; i++){
+            if (list.get(i).nivel>pivot.nivel){
+                lesser.add(list.get(i));
+            }else{
+                greater.add(list.get(i));
+            }
+        }
+        lesser = quickSortPun(lesser);
+        greater = quickSortPun(greater);
+        lesser.add(pivot);
+        lesser.addAll(greater);
+        return greater;
+    }
 
 }

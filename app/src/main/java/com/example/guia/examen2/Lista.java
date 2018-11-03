@@ -12,37 +12,54 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Lista extends AppCompatActivity implements AdapterView.OnItemClickListener  {
+public class Lista extends AppCompatActivity {
 
     private ArrayAdapter adapter;
-    Boolean Listado;
     ListView listView;
+    ArrayList<Jugador> listDificil;
+    ArrayList<Jugador> listFacil;
+    ArrayList<Jugador> listMedio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
-
-        adapter = new AdaptadorJugador(Lista.this,MainActivity.listaJugadores);
-        Jugador.quickSortPun(MainActivity.listaJugadores);
         listView = findViewById(R.id.list);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(this);
-        adapter.notifyDataSetChanged();
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        Listado=getIntent().getBooleanExtra("Listado", false);
+        MainActivity.listaJugadores= Jugador.quickSortNiv(MainActivity.listaJugadores);
+        listDificil=new ArrayList<>();
+        listMedio=new ArrayList<>();
+        listFacil=new ArrayList<>();
+        DivLista(MainActivity.listaJugadores);
+        listFacil = Jugador.quickSortPun(listFacil);
+        listMedio = Jugador.quickSortPun(listMedio);
+        listDificil = Jugador.quickSortPun(listDificil);
+
+        MainActivity.listaJugadores.clear();
+        MainActivity.listaJugadores.addAll(listDificil);
+        MainActivity.listaJugadores.addAll(listMedio);
+        MainActivity.listaJugadores.addAll(listFacil);
+
+        adapter = new AdaptadorJugador(Lista.this,MainActivity.listaJugadores);
+        listView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
 
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-        if(!Listado){
-            //Para seleccionar con que jugador iniciar el juego
-            Intent lista = new Intent(Lista.this,Juego.class);
-            lista.putExtra("Posicion", position);
-            startActivity(lista);
-            finish();
+    private void DivLista(ArrayList<Jugador> lst){
+        Iterator<Jugador> iterator = lst.iterator();
+        while (iterator.hasNext()){
+            Jugador jugador=iterator.next();
+            if(jugador.nivel==1){
+                listFacil.add(jugador);
+            }else{
+                if(jugador.nivel==2){
+                    listMedio.add(jugador);
+                }else{
+                    listDificil.add(jugador);
+                }
+            }
         }
     }
-
 }

@@ -75,6 +75,8 @@ public class Configuracion extends AppCompatActivity {
             Jugador jug = new Jugador(jugador, 0,nivel,0);
             MainActivity.listaJugadores.add(jug);
             finish();
+
+
         }
     }
 }
